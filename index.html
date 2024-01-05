@@ -708,7 +708,8 @@
   <script src="js/custom.js"></script>
 
   <script>
-    document.getElementById("downloadResume").onclick = function () {
+    document.getElementById("downloadResume").onclick = function (event) {
+      event.preventDefault();
       var link = document.createElement('a');
       link.href = './assets/PrudhviMale_Resume.pdf';
       link.download = 'PrudhviMale_Resume.pdf';
@@ -717,5 +718,6 @@
       document.body.removeChild(link);
     };
   </script>
+  
 </body>
 </html>
