@@ -400,15 +400,18 @@ b, strong {
   position: absolute;
   width: 75px;
   height: 75px;
-  line-height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
 }
 .timeline-yr span {
   color: #ffffff;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: bold;
-  display: block;
-  line-height: 75px;
+  line-height: 1.2;
+  word-break: break-word;
+  text-align: center;
 }
 
 .timeline-info {
