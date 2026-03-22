@@ -2,10 +2,31 @@
 
   "use strict";
 
+    const themeStorageKey = 'portfolio-theme';
+
+    function applyTheme(theme) {
+      const isDarkMode = theme === 'dark';
+      $('.color-mode-icon').toggleClass('active', isDarkMode);
+      $('body').toggleClass('dark-mode', isDarkMode);
+    }
+
+    function getPreferredTheme() {
+      const savedTheme = window.localStorage.getItem(themeStorageKey);
+
+      if (savedTheme) {
+        return savedTheme;
+      }
+
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
     // COLOR MODE
+    applyTheme(getPreferredTheme());
+
     $('.color-mode').click(function(){
-        $('.color-mode-icon').toggleClass('active')
-        $('body').toggleClass('dark-mode')
+        const nextTheme = $('body').hasClass('dark-mode') ? 'light' : 'dark';
+        applyTheme(nextTheme);
+        window.localStorage.setItem(themeStorageKey, nextTheme);
     })
 
     // HEADER
@@ -32,7 +53,7 @@
 
     // Particle Effect on Hero Section
     function createParticles() {
-      const particleCount = 30;
+      const particleCount = window.innerWidth <= 767 ? 10 : 30;
       const heroSection = $('.about');
       
       if (heroSection.length === 0) return;
@@ -57,10 +78,9 @@
     }
 
     // Create particles periodically
-    if (window.innerWidth > 768) {
-      setInterval(createParticles, 5000);
-      createParticles();
-    }
+    const particleInterval = window.innerWidth <= 767 ? 7000 : 5000;
+    setInterval(createParticles, particleInterval);
+    createParticles();
 
     // Scroll-Triggered Animations
     function triggerScrollAnimations() {

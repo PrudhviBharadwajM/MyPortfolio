@@ -318,6 +318,11 @@ b, strong {
 .color-mode {
   font-weight: bold;
   cursor: pointer;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font-family: inherit;
+  color: inherit;
 }
 
 .color-mode-icon {
@@ -359,6 +364,9 @@ b, strong {
 .dark-mode .navbar[class*="headroom--not-top"] {
   background: #0c0c0d;
   border-bottom: 1px solid #1f1f1f;
+}
+.dark-mode .navbar-toggler .navbar-toggler-icon {
+  background: #ffffff;
 }
 .dark-mode .small-text {
   background: #0d0c15;
@@ -548,7 +556,10 @@ b, strong {
   }
 
   .color-mode {
-    display: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
   }
 
   .about-image {
@@ -583,8 +594,18 @@ b, strong {
     padding-bottom: 20px;
   }
 
+  .dark-mode .navbar-collapse {
+    background: #0c0c0d;
+  }
+
   .navbar-expand-sm .navbar-nav .nav-link {
     padding: 3px 20px;
+  }
+
+  .particle::before {
+    width: 3px;
+    height: 3px;
+    opacity: 0.7;
   }
 }
 @media (max-width: 580px) {
@@ -725,6 +746,10 @@ html:hover {
   background: rgba(255, 194, 0, 0.3);
   border-radius: 50%;
   animation: float 20s infinite linear;
+}
+
+.about-image {
+  animation: none;
 }
 
 @keyframes float {
